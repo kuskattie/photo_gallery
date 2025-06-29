@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App.tsx";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "./theme";
+import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <App />
+      <BrowserRouter basename="/photo_gallery">
+        <App />
+      </BrowserRouter>
     </ThemeProvider>
   </StrictMode>
 );
