@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react-swc'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/photo_gallery/',
+  base: process.env.NODE_ENV === 'production' ? '/photo_gallery/' : '/',
   plugins: [react()],
 })

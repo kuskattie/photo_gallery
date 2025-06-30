@@ -24,7 +24,7 @@ function GalleryGrid() {
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
 
   const handleClickOpen = (filename: string) => {
-    const fullPath = `/photo_gallery/assets/photos/${filename}`;
+    const fullPath = `/assets/photos/${filename}`;
     setSelectedPhoto(fullPath);
     setOpen(true);
   };
@@ -43,7 +43,7 @@ function GalleryGrid() {
         }}
       >
         {photoList.map((filename, index) => {
-          const fullPath = `/photo_gallery/assets/photos/${filename}`;
+          const fullPath = `/assets/photos/${filename}`;
           return (
             <Box
               key={index}
