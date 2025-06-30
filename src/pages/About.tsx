@@ -56,7 +56,7 @@ function About({ children }: AboutProps) {
       >
         <Box
           component="img"
-          src="/assets/photos/about.jpeg"
+          src="/photo_gallery/assets/photos/about.jpeg"
           alt="Photographer"
           sx={{
             width: "100%",
