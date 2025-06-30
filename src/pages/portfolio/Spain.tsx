@@ -61,10 +61,12 @@ function Spain() {
           <Box
             key={index}
             sx={{ breakInside: "avoid", mb: 2, cursor: "pointer" }}
-            onClick={() => handleClickOpen(`/assets/photos/spain/${file}`)}
+            onClick={() =>
+              handleClickOpen(`/photo_gallery/assets/photos/spain/${file}`)
+            }
           >
             <PhotoCrad
-              src={`/assets/photos/spain/${file}`}
+              src={`/photo_gallery/assets/photos/spain/${file}`}
               alt={`Spain ${index + 1}`}
             />
           </Box>

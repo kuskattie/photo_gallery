@@ -55,10 +55,12 @@ function Portraits() {
           <Box
             key={idx}
             sx={{ breakInside: "avoid", mb: 2, cursor: "pointer" }}
-            onClick={() => handleClickOpen(`/assets/photos/portreits/${file}`)}
+            onClick={() =>
+              handleClickOpen(`/photo_gallery/assets/photos/portreits/${file}`)
+            }
           >
             <PhotoCrad
-              src={`/assets/photos/portreits/${file}`}
+              src={`/photo_gallery/assets/photos/portreits/${file}`}
               alt={`Portrait ${idx + 1}`}
             />
           </Box>

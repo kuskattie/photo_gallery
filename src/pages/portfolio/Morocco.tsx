@@ -57,10 +57,12 @@ function Morocco() {
           <Box
             key={idx}
             sx={{ breakInside: "avoid", mb: 2, cursor: "pointer" }}
-            onClick={() => handleClickOpen(`/assets/photos/morocco/${file}`)}
+            onClick={() =>
+              handleClickOpen(`/photo_gallery/assets/photos/morocco/${file}`)
+            }
           >
             <PhotoCrad
-              src={`/assets/photos/morocco/${file}`}
+              src={`/photo_gallery/assets/photos/morocco/${file}`}
               alt={`Morocco ${idx + 1}`}
             />
           </Box>

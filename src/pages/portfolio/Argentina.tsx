@@ -57,10 +57,12 @@ function Argentina() {
           <Box
             key={idx}
             sx={{ breakInside: "avoid", mb: 2 }}
-            onClick={() => handleClickOpen(`/assets/photos/argentina/${file}`)}
+            onClick={() =>
+              handleClickOpen(`/photo_gallery/assets/photos/argentina/${file}`)
+            }
           >
             <PhotoCrad
-              src={`/assets/photos/argentina/${file}`}
+              src={`/photo_gallery/assets/photos/argentina/${file}`}
               alt={`Argentina ${idx + 1}`}
             />
           </Box>
