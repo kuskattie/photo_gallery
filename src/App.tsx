@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -11,7 +11,7 @@ import Portraits from "./pages/portfolio/Portraits";
 
 function App() {
   return (
-    <Router>
+    <>
       <Header title="Kattie" />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -37,7 +37,7 @@ function App() {
         <Route path="/portfolio/morocco" element={<Morocco />} />
       </Routes>
       <Footer email="e.lujnova@gmail.com" />
-    </Router>
+    </>
   );
 }
 
