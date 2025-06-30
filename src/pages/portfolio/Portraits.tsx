@@ -26,8 +26,10 @@ function Portraits() {
   const [open, setOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
 
-  const handleClickOpen = (src: string) => {
-    setSelectedPhoto(src);
+  // Теперь handleClickOpen принимает только имя файла
+  const handleClickOpen = (filename: string) => {
+    const fullPath = `/photo_gallery/assets/photos/portreits/${filename}`;
+    setSelectedPhoto(fullPath);
     setOpen(true);
   };
 
@@ -55,9 +57,7 @@ function Portraits() {
           <Box
             key={idx}
             sx={{ breakInside: "avoid", mb: 2, cursor: "pointer" }}
-            onClick={() =>
-              handleClickOpen(`/photo_gallery/assets/photos/portreits/${file}`)
-            }
+            onClick={() => handleClickOpen(file)}
           >
             <PhotoCrad
               src={`/photo_gallery/assets/photos/portreits/${file}`}
@@ -67,7 +67,7 @@ function Portraits() {
         ))}
       </Box>
 
-      <Dialog open={open} onClose={handleClose} maxWidth="md">
+      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
         <IconButton
           onClick={handleClose}
           sx={{
@@ -80,7 +80,7 @@ function Portraits() {
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent sx={{ p: 0 }}>
+        <DialogContent sx={{ p: 0, textAlign: "center" }}>
           {selectedPhoto && (
             <Box
               component="img"
@@ -91,8 +91,9 @@ function Portraits() {
                 maxWidth: 800,
                 maxHeight: "80vh",
                 borderRadius: 2,
-                display: "block",
+                objectFit: "contain",
                 margin: "auto",
+                display: "block",
               }}
             />
           )}

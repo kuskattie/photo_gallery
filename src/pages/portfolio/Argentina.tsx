@@ -28,8 +28,9 @@ function Argentina() {
   const [open, setOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
 
-  const handleClickOpen = (src: string) => {
-    setSelectedPhoto(src);
+  const handleClickOpen = (filename: string) => {
+    const fullPath = `/photo_gallery/assets/photos/argentina/${filename}`;
+    setSelectedPhoto(fullPath);
     setOpen(true);
   };
 
@@ -56,10 +57,8 @@ function Argentina() {
         {argentinaPhotos.map((file, idx) => (
           <Box
             key={idx}
-            sx={{ breakInside: "avoid", mb: 2 }}
-            onClick={() =>
-              handleClickOpen(`/photo_gallery/assets/photos/argentina/${file}`)
-            }
+            sx={{ breakInside: "avoid", mb: 2, cursor: "pointer" }}
+            onClick={() => handleClickOpen(file)}
           >
             <PhotoCrad
               src={`/photo_gallery/assets/photos/argentina/${file}`}
@@ -69,7 +68,7 @@ function Argentina() {
         ))}
       </Box>
 
-      <Dialog open={open} onClose={handleClose} maxWidth="md">
+      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
         <IconButton
           onClick={handleClose}
           sx={{
@@ -82,19 +81,20 @@ function Argentina() {
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent sx={{ p: 0 }}>
+        <DialogContent sx={{ p: 0, textAlign: "center" }}>
           {selectedPhoto && (
             <Box
               component="img"
               src={selectedPhoto}
-              alt="Selected"
+              alt="Selected Argentina"
               sx={{
                 width: "100%",
                 maxWidth: 800,
                 maxHeight: "80vh",
                 borderRadius: 2,
-                display: "block",
+                objectFit: "contain",
                 margin: "auto",
+                display: "block",
               }}
             />
           )}

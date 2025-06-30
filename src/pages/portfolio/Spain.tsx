@@ -32,8 +32,10 @@ function Spain() {
   const [open, setOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
 
-  const handleClickOpen = (src: string) => {
-    setSelectedPhoto(src);
+  // Принимаем только имя файла, формируем полный путь внутри
+  const handleClickOpen = (filename: string) => {
+    const fullPath = `/photo_gallery/assets/photos/spain/${filename}`;
+    setSelectedPhoto(fullPath);
     setOpen(true);
   };
 
@@ -61,9 +63,7 @@ function Spain() {
           <Box
             key={index}
             sx={{ breakInside: "avoid", mb: 2, cursor: "pointer" }}
-            onClick={() =>
-              handleClickOpen(`/photo_gallery/assets/photos/spain/${file}`)
-            }
+            onClick={() => handleClickOpen(file)}
           >
             <PhotoCrad
               src={`/photo_gallery/assets/photos/spain/${file}`}
@@ -73,7 +73,7 @@ function Spain() {
         ))}
       </Box>
 
-      <Dialog open={open} onClose={handleClose} maxWidth="md">
+      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
         <IconButton
           onClick={handleClose}
           sx={{
@@ -86,7 +86,7 @@ function Spain() {
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent sx={{ p: 0 }}>
+        <DialogContent sx={{ p: 0, textAlign: "center" }}>
           {selectedPhoto && (
             <Box
               component="img"
@@ -97,8 +97,9 @@ function Spain() {
                 maxWidth: 800,
                 maxHeight: "80vh",
                 borderRadius: 2,
-                display: "block",
+                objectFit: "contain",
                 margin: "auto",
+                display: "block",
               }}
             />
           )}

@@ -28,8 +28,9 @@ function Morocco() {
   const [open, setOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
 
-  const handleClickOpen = (src: string) => {
-    setSelectedPhoto(src);
+  const handleClickOpen = (filename: string) => {
+    const fullPath = `/photo_gallery/assets/photos/morocco/${filename}`;
+    setSelectedPhoto(fullPath);
     setOpen(true);
   };
 
@@ -57,9 +58,7 @@ function Morocco() {
           <Box
             key={idx}
             sx={{ breakInside: "avoid", mb: 2, cursor: "pointer" }}
-            onClick={() =>
-              handleClickOpen(`/photo_gallery/assets/photos/morocco/${file}`)
-            }
+            onClick={() => handleClickOpen(file)} // передаем только имя файла
           >
             <PhotoCrad
               src={`/photo_gallery/assets/photos/morocco/${file}`}
@@ -69,7 +68,7 @@ function Morocco() {
         ))}
       </Box>
 
-      <Dialog open={open} onClose={handleClose} maxWidth="md">
+      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
         <IconButton
           onClick={handleClose}
           sx={{
@@ -82,19 +81,20 @@ function Morocco() {
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent sx={{ p: 0 }}>
+        <DialogContent sx={{ p: 0, textAlign: "center" }}>
           {selectedPhoto && (
             <Box
               component="img"
               src={selectedPhoto}
-              alt="Selected"
+              alt="Selected Morocco"
               sx={{
                 width: "100%",
                 maxWidth: 800,
                 maxHeight: "80vh",
                 borderRadius: 2,
-                display: "block",
+                objectFit: "contain",
                 margin: "auto",
+                display: "block",
               }}
             />
           )}
