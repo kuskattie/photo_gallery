@@ -121,7 +121,7 @@ function Portfolio() {
             {section.photos.map((file, idx) => (
               <PhotoCrad
                 key={idx}
-                src={`/assets/photos/${section.folder}/${file}`}
+                src={`/photo_gallery/assets/photos/${section.folder}/${file}`}
                 alt={`${section.category} ${idx + 1}`}
               />
             ))}
