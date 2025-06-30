@@ -7,74 +7,33 @@ const portfolioData = [
     photos: [
       "photo1.jpeg",
       "photo2.jpeg",
-      "photo3.jpeg",
-      "photo4.jpeg",
-      "photo5.jpeg",
-      "photo6.jpeg",
-      "photo7.jpeg",
-      "photo8.jpeg",
-      "photo9.jpeg",
+      // ...
       "photo10.jpeg",
     ],
-    folder: "portreits",
   },
   {
     category: "Spain",
     photos: [
       "photo1.jpeg",
-      "photo2.jpeg",
-      "photo3.jpeg",
-      "photo4.jpeg",
-      "photo5.jpeg",
-      "photo6.jpeg",
-      "photo7.jpeg",
-      "photo8.jpeg",
-      "photo9.jpeg",
-      "photo10.jpeg",
-      "photo11.jpeg",
-      "photo12.jpeg",
-      "photo13.jpeg",
-      "photo14.jpeg",
-      "photo15.jpeg",
+      // ...
       "photo16.jpeg",
     ],
-    folder: "spain",
   },
   {
     category: "Argentina",
     photos: [
       "photo1.jpeg",
-      "photo2.jpeg",
-      "photo3.jpeg",
-      "photo4.jpeg",
-      "photo5.jpeg",
-      "photo6.jpeg",
-      "photo7.jpeg",
-      "photo8.jpeg",
-      "photo9.jpeg",
-      "photo10.jpeg",
-      "photo11.jpeg",
+      // ...
       "photo12.jpeg",
     ],
-    folder: "argentina",
   },
   {
     category: "Morocco",
     photos: [
       "photo1.jpeg",
-      "photo2.jpeg",
-      "photo3.jpeg",
-      "photo4.jpeg",
-      "photo5.jpeg",
-      "photo6.jpeg",
-      "photo7.jpeg",
-      "photo8.jpeg",
-      "photo9.jpeg",
-      "photo10.jpeg",
-      "photo11.jpeg",
+      // ...
       "photo12.jpeg",
     ],
-    folder: "morocco",
   },
 ];
 
@@ -118,13 +77,16 @@ function Portfolio() {
               gap: 2,
             }}
           >
-            {section.photos.map((file, idx) => (
-              <PhotoCrad
-                key={idx}
-                src={`/photo_gallery/assets/photos/${section.folder}/${file}`}
-                alt={`${section.category} ${idx + 1}`}
-              />
-            ))}
+            {section.photos.map((file, idx) => {
+              const fullPath = `/photo_gallery/assets/photos/${file}`;
+              return (
+                <PhotoCrad
+                  key={idx}
+                  src={fullPath}
+                  alt={`${section.category} ${idx + 1}`}
+                />
+              );
+            })}
           </Box>
         </Box>
       ))}
